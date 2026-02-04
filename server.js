@@ -3,14 +3,21 @@ import bodyParser from "body-parser";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import usersRouter from "./routes/users.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const port = 4000;
 
+// Middlewares
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Définir EJS comme moteur de rendu de vues 
 app.set('view engine', 'ejs');
+
+// Servir des fichiers statiques dans Express
 app.use(express.static('public'));  
 
 
@@ -34,8 +41,9 @@ app.get('/logout',(req, res) => {
   res.render('logout');
 });
 
-// Servir des fichiers statiques dans Express
-app.use(express.static(path.join(__dirname, 'public')));
+// API Routes
+app.use('/api/users', usersRouter);
+
 
 
 app.listen(port, () => {
