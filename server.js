@@ -1,9 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
-import path from "path";
+import dotenv from "dotenv";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import usersRouter from "./routes/users.js";
+
+
+// charge les variables d'environement depuis .env
+dotenv.config();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -42,10 +45,10 @@ app.get('/logout',(req, res) => {
 });
 
 // API Routes
-app.use('/api/users', usersRouter);
 
+// error handling middleware
 
-
+//  server running
 app.listen(port, () => {
   console.log(`l application sera lancé sur le port ${port}`)
 })
