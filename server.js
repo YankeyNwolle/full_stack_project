@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+// import pool from "./src/config/database.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -47,6 +48,14 @@ app.get('/logout',(req, res) => {
 // API Routes
 
 // error handling middleware
+
+// test postgresql connection
+app.get('/', async (req, res) => {
+  console.log("test de connexion à la base de données");
+  const result = await pool.query('SELECT NOW()');
+  console.log("fin du test de connexion à la base de données");
+  res.send(result.rows[0].current_database);
+});
 
 //  server running
 app.listen(port, () => {
