@@ -2,7 +2,6 @@
 import pkg from "pg";
 const { Pool } = pkg;
 
-
 const pool = new Pool({
   user: process.env.USER,
   host: process.env.HOST,  
@@ -11,8 +10,8 @@ const pool = new Pool({
   port: process.env.PORTDB,
 });
 
-pool.connect("connect"), () => {
+pool.on("connect", () => {
     console.log("connexion à la base de données réussie");
-}  
+});
 
 export default pool;
