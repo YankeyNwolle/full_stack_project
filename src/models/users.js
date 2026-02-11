@@ -1,4 +1,6 @@
+// importation du pool de connexion à la base de données 
 import pool from '../config/database.js';
+
 
 export const GetAllUsersblog = async () => {
     const result = await pool.query('SELECT * FROM users');
@@ -11,7 +13,7 @@ export const GetUsersByIdblog = async (id) => {
 }
 
 export const UpdateUsersblog = async (id, username, email) => {
-    const result = await pool.query('UPDATE users SET id = $1, username = $2 WHERE email = $3 RETURNING *', [id, username, email]);
+    const result = await pool.query('UPDATE users SET username = $1, email = $2 WHERE id = $3 RETURNING *', [username, username, id]);
     return result.rows[0];
 }
 
