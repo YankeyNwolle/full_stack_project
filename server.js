@@ -1,4 +1,5 @@
 import express from "express";
+import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
 import pool from "./src/config/database.js";
@@ -16,6 +17,7 @@ const port = 4000;
 
 // Middlewares
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors()); // Activer CORS pour toutes les routes
 
 // Définir EJS comme moteur de rendu de vues 
@@ -49,6 +51,11 @@ app.get('/logout',(req, res) => {
 
 // error handling middleware
 
+// test de la connection à la base de données
+app.get('/', async (req, res) => {
+  const  result = await pool.query('SELECT NOW()');
+  res.send(`le nom de la base de données est : ${result.rows[0].now}`);
+});
 
 //  server running
 app.listen(port, () => {
