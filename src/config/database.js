@@ -1,13 +1,18 @@
 // connexion à la base de données
 import pkg from "pg";
+import dotenv from "dotenv";
+
 const { Pool } = pkg;
+// charger les variables d'environnement à partir du fichier .env
+dotenv.config();
+
 
 const pool = new Pool({
-  user: process.env.USER,
-  host: process.env.HOST,  
-  database: process.env.DB,
-  password: process.env.PASSWORD,
-  port: process.env.PORTDB,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,  
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORTDB,
 });
 
 pool.on("connect", () => {
