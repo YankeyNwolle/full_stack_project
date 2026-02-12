@@ -1,6 +1,6 @@
 import express from "express";
-import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import cors from "cors";
 import pool from "./src/config/database.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -16,7 +16,7 @@ const port = 4000;
 
 // Middlewares
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors()); // Activer CORS pour toutes les routes
 
 // Définir EJS comme moteur de rendu de vues 
 app.set('view engine', 'ejs');
