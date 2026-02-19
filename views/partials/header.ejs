@@ -1,26 +1,69 @@
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>full-stack project</title>
-    <link rel="icon" href="/img/logo/logo_full_stack.png">
-    <link rel="stylesheet" href="/styles/main.css">
-</head>
-<body>
- <header>
-        <div class="logo">
-            <img src="/img/logo/logo_full_stack.png" alt="logo">
-            <h3>mon journal quotidien</h3>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/home">acceuil</a></li>
-                <li><a href="/about">à propos</a></li>
-                <li><a href="/register">s'inscrire</a></li>
-                <li><a href="/login">connexion</a></li>
-                <li><a href="#" class="create_article">+ créer un post</a></li>
-            </ul>
-        </nav>
+<!DOCTYPE html>
+<html class="light" lang="fr">
 
-    </header>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mon Journal Quotidien</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="/img/logo/logo_full_stack.png" type="image/png" />
+</head>
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-[#0d141b] dark:text-white overflow-x-hidden min-h-screen flex flex-col">
+    <nav class="w-full bg-white dark:bg-[#1a2632] border-b border-[#e7edf3] dark:border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3 text-[#0d141b] dark:text-white shrink-0">
+                    <div class="flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-3xl">auto_stories</span>
+                    </div>
+                    <h2 class="text-xl font-bold leading-tight tracking-tight hidden sm:block">Mon Journal Quotidien
+                    </h2>
+                </div>
+                <div
+                    class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300 font-sans">
+                    <a class="hover:text-primary transition-colors" href="#">Accueil</a>
+                    <a class="hover:text-primary transition-colors" href="#">À propos</a>
+                    <a class="hover:text-primary transition-colors" href="#">S'inscrire</a>
+                    <a class="hover:text-primary transition-colors" href="#">Connexion</a>
+                    <button
+                        class="flex items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary hover:bg-blue-600 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em] shadow-sm ml-2">
+                        <span class="mr-2 material-symbols-outlined text-[18px]">add</span>
+                        <span class="truncate">Créer un article</span>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button
+                        class="p-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
