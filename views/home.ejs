@@ -1,24 +1,351 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>full-stack project</title>
-    <link rel="icon" href="/img/logo/logo_full_stack.png">
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-   <%- include('partials/header') %>
-   <!-- section background image -->
-    <section class="banniere_image">
-        <div class="banniere_text">
-            <h1>Bienvenue sur mon journal quotidien</h1>
-            <p>Exprimez vos pensées, partagez vos expériences et connectez-vous avec une communauté passionnée.</p>
-        </div>
-    </section>
-    <!-- section articles -->
-     <section class="article">
-        <h3>Derniers articles</h3>
-     </section>
+<!-- include le header -->
+    <%- include('partials/header') %>
+    <div class="flex-grow flex flex-col">
+        <header class="w-full bg-white dark:bg-[#1a2632] border-b border-[#e7edf3] dark:border-slate-700">
+            <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-20">
+                <div class="relative w-full rounded-2xl overflow-hidden min-h-[400px] flex items-center justify-center bg-cover bg-center"
+                    style='background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAvMyDYCMaiZwaZMQ_J8QZkibCExbMBVS2bPHZrBjLpHnVqfVoQy6_YROYwrM9N310VtHpDamoKfbJTUHC13Vv_F67owyYF2Q59rnNfGmnkyrWUwRHYv072_LADgXjQyAkQws9CKAp8JOejKdx-SxhCbZ-0-4CFXm6-XteuY3wYSYVkiHm3X38WmAkp3U8_pZsWW-JPp7rm4nGSrPBfW1kIAZXFHym0-o6qTW7romRJmQiEE4oSP84iWyMfBQKU_r9DcFuQGKv3JOj0");'>
+                    <div class="relative z-10 flex flex-col items-center text-center p-6 max-w-3xl">
+                        <h1
+                            class="text-white text-4xl md:text-6xl font-black leading-tight tracking-tight mb-4 drop-shadow-md">
+                            Histoires &amp; Idées
+                        </h1>
+                        <p
+                            class="text-white/90 text-lg md:text-xl font-medium leading-relaxed max-w-xl drop-shadow-sm font-sans">
+                            Une collection de réflexions sur le design, le développement et l'avenir du web.
+                        </p>
+                        <div class="mt-8">
+                            <button
+                                class="bg-white text-[#0d141b] hover:bg-slate-100 font-bold py-3 px-8 rounded-full transition-all shadow-lg flex items-center gap-2">
+                                <span>Commencer à lire</span>
+                                <span class="material-symbols-outlined text-sm">arrow_downward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-12">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-[#0d141b] dark:text-white text-3xl font-bold tracking-tight">Derniers Articles</h2>
+                <div class="hidden sm:flex gap-2">
+                    <button aria-label="Vue Grille" class="p-2 text-slate-500 hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined">grid_view</span>
+                    </button>
+                    <button aria-label="Vue Liste" class="p-2 text-slate-400 hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined">view_list</span>
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article
+                    class="group flex flex-col bg-white dark:bg-[#1e2a38] rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvQ-4wvYMx94H8BILdp-HSYptqXblpu7Sp3Q57lERHOOF9V1svkZZiQWrptjf_amus9Wyz_d8m4eXee4wbBWQLeJOS4ZkV6iIUwSVXoaxxa8H_RY66Wl0ZAR0OpkHpNoBVsgxjPTbGitBkPgjqJjT4gzCBZIFc5ozeSYY7fe4FZjgN7L47rQFdW4m9qogTU3lFk1odS1j7jrEZc_Rl4lAzFacORhUPrNVz7TCNVBwnoGzCQjSYkohNfDkkkei-KziRT0BwEeyEACgO");'>
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#0d141b] uppercase tracking-wider font-sans">
+                            Technologie
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 p-6">
+                        <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-3 font-sans">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <span>24 oct. 2023</span>
+                        </div>
+                        <h3
+                            class="text-[#0d141b] dark:text-white text-2xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                            L'Avenir du Web Design
+                        </h3>
+                        <p
+                            class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6 flex-1 font-sans line-clamp-3">
+                            Analyse des tendances de 2024 et de la façon dont l'IA façonne le paysage des interfaces
+                            numériques. Le minimalisme est-il là pour durer ?
+                        </p>
+                        <div
+                            class="pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                            <button
+                                class="text-primary font-bold text-sm flex items-center gap-1 hover:underline decoration-2 underline-offset-4">
+                                Lire la suite
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <button
+                                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 hover:text-blue-600 transition-colors"
+                                    title="Modifier">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button
+                                    class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-500 hover:text-red-600 transition-colors"
+                                    title="Supprimer">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    class="group flex flex-col bg-white dark:bg-[#1e2a38] rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_fLGhPHxrWr6rPNrFqFLKxYeh4as0sDS4cUQVyHn_bR_qO6V-fw5a8J9-N2kapnwEz5waYqFDSMvmcqZ6U2Ixz9o2n2FGixiyNgnRLvl7vEsvXbnpngvbD1rrMhDuqNZBwXWRLkbiLA44pcWW-6u92jy0Ob1lWOCDNiszfK8d28i4L9rzhHFYxNUKEGkvKQt09Jk7mRs-ZgYNmNjHa_tu9MSoMbvQH72yl57RjAYFKqHESaVlpDi90PvqERhnc5pRTH79Qi-ZrM8g");'>
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#0d141b] uppercase tracking-wider font-sans">
+                            Mode de vie
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 p-6">
+                        <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-3 font-sans">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <span>12 sept. 2023</span>
+                        </div>
+                        <h3
+                            class="text-[#0d141b] dark:text-white text-2xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                            Trouver l'Équilibre dans le Chaos
+                        </h3>
+                        <p
+                            class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6 flex-1 font-sans line-clamp-3">
+                            Comment l'instauration d'une routine matinale a transformé ma productivité et ma santé
+                            mentale de façon inattendue.
+                        </p>
+                        <div
+                            class="pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                            <button
+                                class="text-primary font-bold text-sm flex items-center gap-1 hover:underline decoration-2 underline-offset-4">
+                                Lire la suite
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <button
+                                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 hover:text-blue-600 transition-colors"
+                                    title="Modifier">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button
+                                    class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-500 hover:text-red-600 transition-colors"
+                                    title="Supprimer">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    class="group flex flex-col bg-white dark:bg-[#1e2a38] rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZWyEYV66QK8geTk0YXZLUgeW_Z4TkbZeY6q_e2UJEJhh7LHsf9wV0KqHdg3OVcRJjwKEBCZ12Qe2A3gRSlpHujrgLunCOHMFKqZuSZ3Tm5vX_tpnSNH7_qbMRQQEGxwGMsIQiyLbgzzQqf5-MmFG2_vs0AWFwyYNNWcEJnNYLpZnysMEmmi1KUEnZeTYMt7SMWlJ9psSBFziQKUmr_9q5tMnl5AOQ343nOUR_43YisUpcADS8OTI-FhV38v9KE0vi5KWXMibkl_-7");'>
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#0d141b] uppercase tracking-wider font-sans">
+                            Développement
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 p-6">
+                        <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-3 font-sans">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <span>05 août 2023</span>
+                        </div>
+                        <h3
+                            class="text-[#0d141b] dark:text-white text-2xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                            Pourquoi j'ai choisi Tailwind
+                        </h3>
+                        <p
+                            class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6 flex-1 font-sans line-clamp-3">
+                            Un regard complet sur les frameworks CSS utility-first et pourquoi ils accélèrent
+                            considérablement le processus de développement.
+                        </p>
+                        <div
+                            class="pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                            <button
+                                class="text-primary font-bold text-sm flex items-center gap-1 hover:underline decoration-2 underline-offset-4">
+                                Lire la suite
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <button
+                                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 hover:text-blue-600 transition-colors"
+                                    title="Modifier">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button
+                                    class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-500 hover:text-red-600 transition-colors"
+                                    title="Supprimer">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    class="group flex flex-col bg-white dark:bg-[#1e2a38] rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZUhI72Mruy6OWyqvUrs0I1nZoVAeAhWUo2pYY3LoGkwjkZ8dfaiYxXZuhbH08I2gAL1yWEBjgrt2I-1s8tQsOXr7-68IOwazh5S7VeywjWHVlTaX59rKAqMkKUj3H5FzAKCTQuqAXHWpQsL6VHx9GNAjq2ZdcV3iK2_atf96-CQ4ZGykkUqiqrl5C9ch31xeH7A2VbAEFq8bDnJ_aQyGRJBETzOCR77hRptegCMhEvYtmuwsrhnIFN9Tahg7IOT5U8U52KyP2-nOG");'>
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#0d141b] uppercase tracking-wider font-sans">
+                            Critique
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 p-6">
+                        <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-3 font-sans">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <span>18 juil. 2023</span>
+                        </div>
+                        <h3
+                            class="text-[#0d141b] dark:text-white text-2xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                            Livre du Mois : Deep Work
+                        </h3>
+                        <p
+                            class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6 flex-1 font-sans line-clamp-3">
+                            Le chef-d'œuvre de Cal Newport sur la concentration dans un monde distrait est une lecture
+                            incontournable pour les créatifs.
+                        </p>
+                        <div
+                            class="pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                            <button
+                                class="text-primary font-bold text-sm flex items-center gap-1 hover:underline decoration-2 underline-offset-4">
+                                Lire la suite
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <button
+                                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 hover:text-blue-600 transition-colors"
+                                    title="Modifier">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button
+                                    class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-500 hover:text-red-600 transition-colors"
+                                    title="Supprimer">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    class="group flex flex-col bg-white dark:bg-[#1e2a38] rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDzc-JPdy5eBrkR_BAAJwMW2Z1Q7L4SggW8QasaX_fgZMLYnjrESPGcjAnPnaYPCK42taeC60bc8msnnBdBPt1veOpxN72ZwqlD_sZyVm7r9SFGvbSgcHy11MZvk0S6HVd0zKQXjSU06AGKOStUQwSLNInURtsIYE-OcGAKA0SMAUkPKLihxmft9F3_bMnDbMr8BMGQ0DAlJYHfCoJ_wKiv1iwusfZjPQSV7SFAKwiPr9LxuDJz6QmZRPIi41iz0sTn3hTim5-4RST9");'>
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#0d141b] uppercase tracking-wider font-sans">
+                            Communauté
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 p-6">
+                        <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-3 font-sans">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <span>30 juin 2023</span>
+                        </div>
+                        <h3
+                            class="text-[#0d141b] dark:text-white text-2xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                            La Valeur du Mentorat
+                        </h3>
+                        <p
+                            class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6 flex-1 font-sans line-clamp-3">
+                            Trouver un mentor peut changer la donne pour votre carrière. Voici comment j'ai trouvé le
+                            mien et ce que j'ai appris.
+                        </p>
+                        <div
+                            class="pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                            <button
+                                class="text-primary font-bold text-sm flex items-center gap-1 hover:underline decoration-2 underline-offset-4">
+                                Lire la suite
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <button
+                                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 hover:text-blue-600 transition-colors"
+                                    title="Modifier">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button
+                                    class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-500 hover:text-red-600 transition-colors"
+                                    title="Supprimer">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    class="group flex flex-col bg-white dark:bg-[#1e2a38] rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACPRCJCTcCM--p34SIIEzgvb_rsurdrGatSldqyFCUg17l6O7UKNE7Klp4du7VPeoDxwaiKw1NzKf_ODYwu7JlgHEbS3T7qVcRK8d3HmUAOdGIw4R3G2r_F8Nzy8CRXjusVJWIVS91pX7V2uFjbqmX-VQQl__kEurRZWFIiB9B1VrL3dE9MF6NDDSCNoKwVE0xVfkt4BwIPpuiHVGmhI9kfTdyiNmEDG5BxN5nYzkXK_lFULUGqsWXUdRXJa1Kqz2r2hMa4-AZ-drP");'>
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#0d141b] uppercase tracking-wider font-sans">
+                            Voyage
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 p-6">
+                        <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-3 font-sans">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <span>15 mai 2023</span>
+                        </div>
+                        <h3
+                            class="text-[#0d141b] dark:text-white text-2xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                            Déconnecter pour se Reconnecter
+                        </h3>
+                        <p
+                            class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6 flex-1 font-sans line-clamp-3">
+                            Une semaine en montagne sans internet m'a appris l'importance d'être présent dans l'instant.
+                        </p>
+                        <div
+                            class="pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                            <button
+                                class="text-primary font-bold text-sm flex items-center gap-1 hover:underline decoration-2 underline-offset-4">
+                                Lire la suite
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <button
+                                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 hover:text-blue-600 transition-colors"
+                                    title="Modifier">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button
+                                    class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-500 hover:text-red-600 transition-colors"
+                                    title="Supprimer">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="mt-16 flex items-center justify-center gap-4">
+                <button
+                    class="flex items-center justify-center px-4 h-10 text-base font-bold text-slate-500 bg-white border border-slate-300 rounded-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white disabled:opacity-50"
+                    disabled="">
+                    <span class="material-symbols-outlined mr-2 text-sm">arrow_back</span>
+                    Précédent
+                </button>
+                <div class="flex gap-2">
+                    <button
+                        class="flex items-center justify-center w-10 h-10 text-white bg-primary border border-primary rounded-lg font-bold">1</button>
+                    <button
+                        class="flex items-center justify-center w-10 h-10 text-slate-500 bg-white border border-slate-300 rounded-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white font-bold">2</button>
+                    <button
+                        class="flex items-center justify-center w-10 h-10 text-slate-500 bg-white border border-slate-300 rounded-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white font-bold hidden sm:flex">3</button>
+                </div>
+                <button
+                    class="flex items-center justify-center px-4 h-10 text-base font-bold text-slate-500 bg-white border border-slate-300 rounded-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">
+                    Suivant
+                    <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+                </button>
+            </div>
+        </main>
+       <!-- include le footer -->
+        <%- include('partials/footer') %>
+    </div>
+
 </body>
+
 </html>
