@@ -26,33 +26,19 @@ app.set('view engine', 'ejs');
 // Servir des fichiers statiques dans Express
 app.use(express.static('public'));  
 
+// les routes
 
-app.get('/home',(req, res) => {
+app.get('/',(req, res) => {
   res.render('home');
 });
 
-app.get('/login',(req, res) => {
-  res.render('login');
-});
-
-app.get('/register',(req, res) => {
-  res.render('register'); 
-});
-
-app.get('/about',(req, res) => {
-  res.render('about');
-});
-
-app.get('/logout',(req, res) => {
-  res.render('logout');
-});
 
 // API Routes
 
 // error handling middleware
 
 // test de la connection à la base de données
-app.get('/', async (req, res) => {
+app.get('/test-db.js', async (req, res) => {
   const  result = await pool.query('SELECT NOW()');
   res.send(`le nom de la base de données est : ${result.rows[0].now}`);
 });
