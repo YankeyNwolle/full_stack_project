@@ -346,6 +346,69 @@
         <%- include('partials/footer') %>
     </div>
 
+    <!-- Login Modal Overlay -->
+    <div id="login-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <!-- Backdrop -->
+        <div id="login-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+        <!-- Modal Card -->
+        <div class="relative bg-white dark:bg-[#1a2632] rounded-2xl shadow-2xl w-full max-w-md mx-4 p-8 z-10">
+            <div class="flex items-center justify-between mb-6">
+                <h2 id="modal-title" class="text-2xl font-bold text-[#0d141b] dark:text-white">Connexion</h2>
+                <button id="login-modal-close" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 transition-colors" aria-label="Fermer">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form method="post" action="/login" class="flex flex-col gap-4">
+                <div class="flex flex-col gap-1">
+                    <label for="modal-email" class="text-sm font-medium text-slate-700 dark:text-slate-300 font-sans">Adresse e-mail</label>
+                    <input type="email" name="email" id="modal-email" required
+                        class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-[#101922] text-[#0d141b] dark:text-white px-4 py-2.5 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                        placeholder="votre@email.com" />
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label for="modal-password" class="text-sm font-medium text-slate-700 dark:text-slate-300 font-sans">Mot de passe</label>
+                    <input type="password" name="password" id="modal-password" required
+                        class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-[#101922] text-[#0d141b] dark:text-white px-4 py-2.5 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                        placeholder="••••••••" />
+                </div>
+                <button type="submit"
+                    class="mt-2 w-full flex items-center justify-center h-11 bg-primary hover:bg-blue-600 transition-colors text-white font-bold rounded-lg text-sm font-sans shadow-sm">
+                    Se connecter
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var modal = document.getElementById('login-modal');
+            var openBtn = document.getElementById('login-link');
+            var closeBtn = document.getElementById('login-modal-close');
+            var backdrop = document.getElementById('login-modal-backdrop');
+
+            function openModal(e) {
+                e.preventDefault();
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                document.getElementById('modal-email').focus();
+            }
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            if (openBtn) openBtn.addEventListener('click', openModal);
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (backdrop) backdrop.addEventListener('click', closeModal);
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>
