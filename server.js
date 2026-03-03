@@ -1,12 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import session  from "express-session";
+import session from "express-session";
 import flash from "connect-flash";
-import cors from "cors";
+import bcrypt from "bcryptjs/dist/bcrypt.js";
 import pool from "./src/config/database.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { hash } from "crypto";
 
 
 // charge les variables d'environement depuis .env
@@ -16,12 +17,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const port = 4000;
+const salting = 10;
 
 // Middlewares
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
+  secret: 'votre_secret_ici',
   resave: false,
   saveUninitialized: false
 }));
@@ -39,11 +42,11 @@ app.use((req, res, next) => {
 
 
 // Servir des fichiers statiques dans Express
-app.use(express.static('public'));  
+app.use(express.static('public'));
 
 
 // routes
-app.get('/',(req, res) => {
+app.get('/', (req, res) => {
   res.render('home');
 });
 
@@ -58,7 +61,7 @@ app.get('/login', (req, res) => {
 
 // test de la connection à la base de données
 app.get('/test-db.js', async (req, res) => {
-  const  result = await pool.query('SELECT NOW()');
+  const result = await pool.query('SELECT NOW()');
   res.send(`le nom de la base de données est : ${result.rows[0].now}`);
 });
 
@@ -91,10 +94,17 @@ app.post("/register", async (req, res) => {
   const password = req.body.password;
 
   try {
-    const result = await pool.query(
-      "INSERT INTO users (username,password) VALUES($1, $2)",
-      [username, password]
-    );
+    // pasword hashing
+    bcrypt.hash(password, salting, async (err, hash) => {
+      if (err) {
+        console.log("erreur pour hashing le mot de passe!");
+      } else {
+        const result = await pool.query(
+          "INSERT INTO users (username,password) VALUES($1, $2)",
+          [username, hash]
+        );
+      }
+    })
 
     req.flash('success', 'Inscription réussie 🎉​!');
     return res.redirect("/");
