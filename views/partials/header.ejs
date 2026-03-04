@@ -29,13 +29,21 @@
                     class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300 font-sans">
                     <a class="hover:text-primary transition-colors" href="/">Accueil</a> 
                     <a class="hover:text-primary transition-colors" href="#">À propos</a>
-                    <a class="hover:text-primary transition-colors" href="register">S'inscrire</a>
-                    <a class="hover:text-primary transition-colors" href="login">Connexion</a>
+                    <% if (user) { %>
+                    <span class="text-slate-600 dark:text-slate-300 font-semibold">
+                        <span class="material-symbols-outlined text-[16px] align-middle">account_circle</span>
+                        <%= user.username %>
+                    </span>
+                    <a class="hover:text-primary transition-colors" href="/logout">Déconnexion</a>
                     <button
                         class="flex items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary hover:bg-blue-600 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em] shadow-sm ml-2">
                         <span class="mr-2 material-symbols-outlined text-[18px]">add</span>
                         <span class="truncate">Créer un article</span>
                     </button>
+                    <% } else { %>
+                    <a class="hover:text-primary transition-colors" href="/register">S'inscrire</a>
+                    <a class="hover:text-primary transition-colors" href="/login">Connexion</a>
+                    <% } %>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button

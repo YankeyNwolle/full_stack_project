@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
-  secret: 'votre_secret_ici',
+  secret: 'TOPSECRET',
   resave: false,
   saveUninitialized: false
 }));
@@ -37,6 +37,7 @@ app.set('view engine', 'ejs');
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success');
   res.locals.error_msg = req.flash('error');
+  res.locals.user = req.session.user || null;
   next();
 });
 
@@ -80,6 +81,7 @@ app.post("/login", async (req, res) => {
       req.flash('error', 'Nom d\'utilisateur ou mot de passe incorrect.');
       return res.redirect("/login");
     } else {
+      req.session.user = { username: search.rows[0].username };
       req.flash('success', 'Connexion réussie !');
       return res.redirect("/");
     }
@@ -113,6 +115,15 @@ app.post("/register", async (req, res) => {
     req.flash('error', 'Erreur lors de l\'inscription. Ce nom d\'utilisateur existe peut-être déjà.');
     return res.redirect("/register");
   }
+});
+
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Erreur lors de la déconnexion :', err);
+    }
+    res.redirect('/');
+  });
 });
 
 //  server running
