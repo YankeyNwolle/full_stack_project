@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
-  secret: 'votre_secret_ici',
+  secret: 'TOPSECRET',
   resave: false,
   saveUninitialized: false
 }));
