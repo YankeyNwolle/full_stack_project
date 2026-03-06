@@ -40,6 +40,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+    res.locals.user = req.session?.user || null;
+    res.locals.isAuthenticated = !!req.session?.user;
+    next();
+});
 
 // Servir des fichiers statiques dans Express
 app.use(express.static('public'));
