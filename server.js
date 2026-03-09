@@ -7,7 +7,6 @@ import bcrypt from "bcryptjs/dist/bcrypt.js";
 import pool from "./src/config/database.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import { hash } from "crypto";
 
 
 // charge les variables d'environement depuis .env
