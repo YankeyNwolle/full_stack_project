@@ -7,6 +7,7 @@ import bcrypt from "bcryptjs/dist/bcrypt.js";
 import pool from "./src/config/database.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { hash } from "crypto";
 
 
 // charge les variables d'environement depuis .env
@@ -75,24 +76,38 @@ app.post("/login", async (req, res) => {
   const password = req.body.password;
 
   try {
+    // Cherche l'utilisateur par username uniquement
     const search = await pool.query(
-      "SELECT * FROM users WHERE username = $1 and password = $2",
-      [username, password]
+      "SELECT * FROM users WHERE username = $1",
+      [username]
     );
 
     if (search.rows.length == 0) {
       req.flash('error', 'Nom d\'utilisateur ou mot de passe incorrect.');
       return res.redirect("/login");
-    } else {
-      req.flash('success', 'Connexion réussie !');
-      return res.redirect("/");
     }
+
+    const user = search.rows[0];
+
+    // Compare le mot de passe fourni avec le hash stocké
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      req.flash('error', 'Nom d\'utilisateur ou mot de passe incorrect.');
+      return res.redirect("/login");
+    }
+
+    // Authentification réussie
+    req.session.user = { id: user.id, username: user.username };
+    req.flash('success', 'Connexion réussie !');
+    return res.redirect("/");
   } catch (err) {
     console.error("Erreur lors de la connexion :", err);
     req.flash('error', 'Erreur serveur, réessayez plus tard.');
     return res.redirect("/login");
   }
 });
+
 app.post("/register", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -117,6 +132,20 @@ app.post("/register", async (req, res) => {
     req.flash('error', 'Erreur lors de l\'inscription. Ce nom d\'utilisateur existe peut-être déjà.');
     return res.redirect("/register");
   }
+});
+
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
+});
+
+app.get('/profile', (req, res) => {
+  if (!req.session.user) {
+    req.flash('error', 'Veuillez vous connecter.');
+    return res.redirect('/login');
+  }
+  res.render('profile', { user: req.session.user });
 });
 
 //  server running
